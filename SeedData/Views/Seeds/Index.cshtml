@@ -1,0 +1,167 @@
+﻿@model PaginatedList<SeedData.Data.Seed>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <p>
+        <a asp-action="Create">Create New</a>
+       
+    </p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<table class="table table-condensed table-responsive table-striped table-hover table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Scientific Name
+            </th>
+            <th>
+                Common Name
+            </th>
+            <th>
+                Prairie
+            </th>
+            <th>
+                Savanna
+            </th>
+            <th>
+                Woodland
+            </th>
+            <th>
+                Dry
+            </th>
+            <th>
+                Dry Mesic
+            </th>
+            <th>
+                Mesic
+            </th>
+            <th>
+                Wet Mesic
+            </th>
+            <th>
+                Wet
+            </th>
+            <th>
+                Bloom Month
+            </th>
+            <th>
+                Color
+            </th>
+            <th>
+                End Month
+            </th>
+            <th>
+                Start Month
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ScientificName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CommonName)
+                </td>
+                <td>
+                    @if (item.Prairie == 1)
+                    {
+                        <input type="checkbox" checked="checked" />
+                    }
+                </td>
+                <td>
+                    @if (item.Savanna == 1)
+                    {
+                        <input type="checkbox" checked="checked" />
+                    }
+                </td>
+                <td>
+                    @if (item.Woodland == 1)
+                    {
+                        <input type="checkbox" checked="checked" />
+                    }
+                </td>
+                <td>
+                    @if (item.Dry == 1)
+                    {
+                        <input type="checkbox" checked="checked" />
+                    }
+                </td>
+                <td>
+                    @if (item.Drymesic == 1)
+                    {
+                        <input type="checkbox" checked="checked" />
+                    }
+                </td>
+                <td>
+                    @if (item.Mesic == 1)
+                    {
+                        <input type="checkbox" checked="checked" />
+                    }
+                </td>
+                <td>
+                    @if (item.Wetmesic == 1)
+                    {
+                        <input type="checkbox" checked="checked" />
+                    }
+                </td>
+                <td>
+                    @if (item.Wet == 1)
+                    {
+                        <input type="checkbox" checked="checked" />
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BloomMonth.Month1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Color.Color1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndMonth.Month1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartMonth.Month1)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.SeedId">Edit</a> 
+                    
+                    <!--<a asp-action="Delete" asp-route-id="@item.SeedId">Delete</a>-->
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>

@@ -1,0 +1,106 @@
+﻿@model SeedData.Data.Seed
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Seed</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ScientificName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ScientificName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CommonName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CommonName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Prairie)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Prairie)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Savanna)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Savanna)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Woodland)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Woodland)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Dry)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Dry)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Drymesic)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Drymesic)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Mesic)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Mesic)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Wetmesic)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Wetmesic)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Wet)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Wet)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BloomMonth)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BloomMonth.Idmonth)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Color)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Color.Idcolor)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EndMonth)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EndMonth.Idmonth)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StartMonth)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StartMonth.Idmonth)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="SeedId" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

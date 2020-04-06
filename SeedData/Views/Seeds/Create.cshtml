@@ -1,0 +1,109 @@
+﻿@model SeedData.Data.Seed
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create Seed</h2>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ScientificName" class="control-label">Scientific Name</label>
+                <input asp-for="ScientificName" class="form-control" />
+                <span asp-validation-for="ScientificName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CommonName" class="control-label">Common Name</label>
+                <input asp-for="CommonName" class="form-control" />
+                <span asp-validation-for="CommonName" class="text-danger"></span>
+            </div>
+            <br />
+            <label class="control-label">Sun Exposure</label>
+            <br />
+            <br />
+            <br />
+
+            <div class="form-group">
+                <label asp-for="Prairie" class="control-label"></label>
+                <input asp-for="DisplayPrairie" class="form-control" />
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Savanna" class="control-label"></label>
+                <input asp-for="DisplaySavanna" class="form-control" />
+                <span asp-validation-for="Savanna" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Woodland" class="control-label"></label>
+                <input asp-for="DisplayWoodland" class="form-control" />
+                <span asp-validation-for="Woodland" class="text-danger"></span>
+            </div>
+            <br />
+            <label class="control-label">Moisture</label>
+            <br />
+            <br />
+            <br />
+
+
+            <div class="form-group">
+                <label asp-for="Dry" class="control-label"></label>
+                <input asp-for="DisplayDry" class="form-control" />
+                <span asp-validation-for="Dry" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Drymesic" class="control-label">Dry Mesic</label>
+                <input asp-for="DisplayDryMesic" class="form-control" />
+                <span asp-validation-for="Drymesic" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mesic" class="control-label"></label>
+                <input asp-for="DisplayMesic" class="form-control" />
+                <span asp-validation-for="Mesic" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Wetmesic" class="control-label">Wet Mesic</label>
+                <input asp-for="DisplayWetMesic" class="form-control" />
+                <span asp-validation-for="Wetmesic" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Wet" class="control-label"></label>
+                <input asp-for="DisplayWet" class="form-control" />
+                <span asp-validation-for="Wet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ColorId" class="control-label">Bloom Color</label>
+                <select asp-for="ColorId" class="form-control" asp-items="ViewBag.ColorId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="BloomMonthId" class="control-label">Bloom Month</label>
+                <select asp-for="BloomMonthId" class="form-control" asp-items="ViewBag.BloomMonthId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartMonthId" class="control-label">Start Month</label>
+                <select asp-for="StartMonthId" class="form-control" asp-items="ViewBag.StartMonthId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndMonthId" class="control-label">End Month</label>
+                <select asp-for="EndMonthId" class="form-control" asp-items="ViewBag.EndMonthId"></select>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

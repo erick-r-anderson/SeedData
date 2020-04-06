@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29920.165
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeedData", "SeedData\SeedData.csproj", "{7939942D-E316-4D6E-BA59-2527C51A3273}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeedDataTransfer", "SeedDataTransfer\SeedDataTransfer.csproj", "{6ED544E2-D5ED-49A3-AB89-8001F480DD89}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7939942D-E316-4D6E-BA59-2527C51A3273}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7939942D-E316-4D6E-BA59-2527C51A3273}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7939942D-E316-4D6E-BA59-2527C51A3273}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7939942D-E316-4D6E-BA59-2527C51A3273}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6ED544E2-D5ED-49A3-AB89-8001F480DD89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ED544E2-D5ED-49A3-AB89-8001F480DD89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ED544E2-D5ED-49A3-AB89-8001F480DD89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ED544E2-D5ED-49A3-AB89-8001F480DD89}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {47D6E003-F269-415A-B20C-18E8DD01BB72}
+	EndGlobalSection
+EndGlobal
