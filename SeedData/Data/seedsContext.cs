@@ -21,11 +21,10 @@ namespace SeedData.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("DataSource=seeds.db");
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                
+                optionsBuilder.UseMySQL("server=localhost;port=3306;user=root;password=9545;database=seeds");
             }
         }
 
@@ -70,8 +69,14 @@ namespace SeedData.Data
                 entity.HasIndex(e => e.BloomMonthId)
                     .HasName("fk_monthbloom_idx");
 
-                entity.HasIndex(e => e.ColorId)
+                entity.HasIndex(e => e.Color1Id)
                     .HasName("fk_color_idx");
+
+                entity.HasIndex(e => e.Color2Id)
+                    .HasName("fk_color2_idx");
+
+                entity.HasIndex(e => e.Color3Id)
+                    .HasName("fk_color3_idx");
 
                 entity.HasIndex(e => e.EndMonthId)
                     .HasName("fk_monthend_idx");
@@ -87,8 +92,16 @@ namespace SeedData.Data
                     .HasColumnName("bloomMonthId")
                     .HasColumnType("int(11)");
 
-                entity.Property(e => e.ColorId)
-                    .HasColumnName("colorId")
+                entity.Property(e => e.Color1Id)
+                    .HasColumnName("color1Id")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Color2Id)
+                    .HasColumnName("color2Id")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Color3Id)
+                    .HasColumnName("color3Id")
                     .HasColumnType("int(11)");
 
                 entity.Property(e => e.CommonName)
@@ -146,10 +159,20 @@ namespace SeedData.Data
                     .HasForeignKey(d => d.BloomMonthId)
                     .HasConstraintName("fk_monthbloom");
 
-                entity.HasOne(d => d.Color)
-                    .WithMany(p => p.Seed)
-                    .HasForeignKey(d => d.ColorId)
+                entity.HasOne(d => d.Color1)
+                    .WithMany(p => p.SeedColor1)
+                    .HasForeignKey(d => d.Color1Id)
                     .HasConstraintName("fk_color");
+
+                entity.HasOne(d => d.Color2)
+                    .WithMany(p => p.SeedColor2)
+                    .HasForeignKey(d => d.Color2Id)
+                    .HasConstraintName("fk_color2");
+
+                entity.HasOne(d => d.Color3)
+                    .WithMany(p => p.SeedColor3)
+                    .HasForeignKey(d => d.Color3Id)
+                    .HasConstraintName("fk_color3");
 
                 entity.HasOne(d => d.EndMonth)
                     .WithMany(p => p.SeedEndMonth)

@@ -17,13 +17,17 @@ namespace SeedData.Data
         public byte? Mesic { get; set; }
         public byte? Wetmesic { get; set; }
         public byte? Wet { get; set; }
-        public int? ColorId { get; set; }
+        public int? Color1Id { get; set; }
         public int? StartMonthId { get; set; }
         public int? EndMonthId { get; set; }
         public int? BloomMonthId { get; set; }
+        public int? Color2Id { get; set; }
+        public int? Color3Id { get; set; }
 
         public Month BloomMonth { get; set; }
-        public Color Color { get; set; }
+        public Color Color1 { get; set; }
+        public Color Color2 { get; set; }
+        public Color Color3 { get; set; }
         public Month EndMonth { get; set; }
         public Month StartMonth { get; set; }
 

@@ -27,7 +27,7 @@ namespace SeedData.Controllers
         // GET: Seeds
         public async Task<IActionResult> Index(string SearchString, int? pageNumber, string currentFilter)
         {
-            var seedsContext = _context.Seed.Include(s => s.BloomMonth).Include(s => s.Color).Include(s => s.EndMonth).Include(s => s.StartMonth);
+            var seedsContext = _context.Seed.Include(s => s.BloomMonth).Include(s => s.Color1).Include(s => s.EndMonth).Include(s => s.StartMonth);
             IQueryable<Seed> displaySeeds;
 
             
@@ -47,7 +47,7 @@ namespace SeedData.Controllers
 
                 displaySeeds = seedsContext.Where(s => (s.CommonName.ToUpper().Contains(SearchString.ToUpper()) ||
                  s.ScientificName.ToUpper().Contains(SearchString.ToUpper()) ||
-                 s.Color.Color1.ToUpper().Contains(SearchString.ToUpper()) ||
+                 s.Color1.Color1.ToUpper().Contains(SearchString.ToUpper()) ||
                  s.BloomMonth.Month1.ToUpper().Contains(SearchString.ToUpper()) ||
                  s.StartMonth.Month1.ToUpper().Contains(SearchString.ToUpper()) ||
                  s.EndMonth.Month1.ToUpper().Contains(SearchString.ToUpper())))
@@ -75,7 +75,7 @@ namespace SeedData.Controllers
 
             var seed = await _context.Seed
                 .Include(s => s.BloomMonth)
-                .Include(s => s.Color)
+                .Include(s => s.Color1)
                 .Include(s => s.EndMonth)
                 .Include(s => s.StartMonth)
                 .FirstOrDefaultAsync(m => m.SeedId == id);
@@ -113,7 +113,7 @@ namespace SeedData.Controllers
             }
             //DisplayData["BloomMonthId"] = new SelectList(_context.Month, "Idmonth", "Idmonth", seed.BloomMonthId);
             ViewData["BloomMonthId"] = new SelectList(_context.Month, "Idmonth", "Month1", seed.BloomMonth);
-            ViewData["ColorId"] = new SelectList(_context.Color, "Idcolor", "Color1", seed.ColorId);
+            ViewData["ColorId"] = new SelectList(_context.Color, "Idcolor", "Color1", seed.Color1Id);
             ViewData["EndMonthId"] = new SelectList(_context.Month, "Idmonth", "Month1", seed.EndMonthId);
             ViewData["StartMonthId"] = new SelectList(_context.Month, "Idmonth", "Month1", seed.StartMonthId);
             return View(seed);
@@ -172,7 +172,7 @@ namespace SeedData.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["BloomMonthId"] = new SelectList(_context.Month, "Idmonth", "Month1", seed.BloomMonth);
-            ViewData["ColorId"] = new SelectList(_context.Color, "Idcolor", "Color1", seed.ColorId);
+            ViewData["ColorId"] = new SelectList(_context.Color, "Idcolor", "Color1", seed.Color1Id);
             ViewData["EndMonthId"] = new SelectList(_context.Month, "Idmonth", "Month1", seed.EndMonthId);
             ViewData["StartMonthId"] = new SelectList(_context.Month, "Idmonth", "Month1", seed.StartMonthId);
             return View(seed);
@@ -189,7 +189,7 @@ namespace SeedData.Controllers
 
             var seed = await _context.Seed
                 .Include(s => s.BloomMonth)
-                .Include(s => s.Color)
+                .Include(s => s.Color1)
                 .Include(s => s.EndMonth)
                 .Include(s => s.StartMonth)
                 .FirstOrDefaultAsync(m => m.SeedId == id);
