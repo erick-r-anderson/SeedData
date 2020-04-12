@@ -55,7 +55,13 @@
                 Bloom Month
             </th>
             <th>
-                Color
+                Primary Bloom Color
+            </th>
+            <th>
+                Bloom Color 2
+            </th>
+            <th>
+                Bloom Color 3
             </th>
             <th>
                 End Month
@@ -69,79 +75,85 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ScientificName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CommonName)
-                </td>
-                <td>
-                    @if (item.Prairie == 1)
-                    {
-                        <input type="checkbox" checked="checked" />
-                    }
-                </td>
-                <td>
-                    @if (item.Savanna == 1)
-                    {
-                        <input type="checkbox" checked="checked" />
-                    }
-                </td>
-                <td>
-                    @if (item.Woodland == 1)
-                    {
-                        <input type="checkbox" checked="checked" />
-                    }
-                </td>
-                <td>
-                    @if (item.Dry == 1)
-                    {
-                        <input type="checkbox" checked="checked" />
-                    }
-                </td>
-                <td>
-                    @if (item.Drymesic == 1)
-                    {
-                        <input type="checkbox" checked="checked" />
-                    }
-                </td>
-                <td>
-                    @if (item.Mesic == 1)
-                    {
-                        <input type="checkbox" checked="checked" />
-                    }
-                </td>
-                <td>
-                    @if (item.Wetmesic == 1)
-                    {
-                        <input type="checkbox" checked="checked" />
-                    }
-                </td>
-                <td>
-                    @if (item.Wet == 1)
-                    {
-                        <input type="checkbox" checked="checked" />
-                    }
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BloomMonth.Month1)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Color1.Color1)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EndMonth.Month1)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StartMonth.Month1)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.SeedId">Edit</a> 
-                    
-                    <!--<a asp-action="Delete" asp-route-id="@item.SeedId">Delete</a>-->
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ScientificName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommonName)
+            </td>
+            <td>
+                @if (item.Prairie == 1)
+                {
+                    <input type="checkbox" checked="checked" />
+                }
+            </td>
+            <td>
+                @if (item.Savanna == 1)
+                {
+                    <input type="checkbox" checked="checked" />
+                }
+            </td>
+            <td>
+                @if (item.Woodland == 1)
+                {
+                    <input type="checkbox" checked="checked" />
+                }
+            </td>
+            <td>
+                @if (item.Dry == 1)
+                {
+                    <input type="checkbox" checked="checked" />
+                }
+            </td>
+            <td>
+                @if (item.Drymesic == 1)
+                {
+                    <input type="checkbox" checked="checked" />
+                }
+            </td>
+            <td>
+                @if (item.Mesic == 1)
+                {
+                    <input type="checkbox" checked="checked" />
+                }
+            </td>
+            <td>
+                @if (item.Wetmesic == 1)
+                {
+                    <input type="checkbox" checked="checked" />
+                }
+            </td>
+            <td>
+                @if (item.Wet == 1)
+                {
+                    <input type="checkbox" checked="checked" />
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BloomMonth.Month1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color1.Color1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color2.Color1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color3.Color1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndMonth.Month1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartMonth.Month1)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SeedId">Edit</a>
+
+                <!--<a asp-action="Delete" asp-route-id="@item.SeedId">Delete</a>-->
+            </td>
+        </tr>
         }
     </tbody>
 </table>

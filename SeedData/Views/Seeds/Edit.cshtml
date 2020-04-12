@@ -78,8 +78,16 @@
                 <span asp-validation-for="Wet" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Color1Id" class="control-label">Bloom Color</label>
+                <label asp-for="Color1Id" class="control-label">Primary Bloom Color</label>
                 <select asp-for="Color1Id" class="form-control" asp-items="ViewBag.Color1Id"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Color2Id" class="control-label">Bloom Color 2</label>
+                <select asp-for="Color2Id" class="form-control" asp-items="ViewBag.Color1Id"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Color3Id" class="control-label">Bloom Color 3</label>
+                <select asp-for="Color3Id" class="form-control" asp-items="ViewBag.Color1Id"></select>
             </div>
             <div class="form-group">
                 <label asp-for="BloomMonthId" class="control-label">Bloom Month</label>
