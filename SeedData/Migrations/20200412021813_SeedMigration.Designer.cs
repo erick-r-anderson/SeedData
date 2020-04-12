@@ -9,7 +9,7 @@ using SeedData.Data;
 namespace SeedData.Migrations
 {
     [DbContext(typeof(seedsContext))]
-    [Migration("20200405214744_SeedMigration")]
+    [Migration("20200412021813_SeedMigration")]
     partial class SeedMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -63,8 +63,16 @@ namespace SeedData.Migrations
                         .HasColumnName("bloomMonthId")
                         .HasColumnType("int(11)");
 
-                    b.Property<int?>("ColorId")
-                        .HasColumnName("colorId")
+                    b.Property<int?>("Color1Id")
+                        .HasColumnName("color1Id")
+                        .HasColumnType("int(11)");
+
+                    b.Property<int?>("Color2Id")
+                        .HasColumnName("color2Id")
+                        .HasColumnType("int(11)");
+
+                    b.Property<int?>("Color3Id")
+                        .HasColumnName("color3Id")
                         .HasColumnType("int(11)");
 
                     b.Property<string>("CommonName")
@@ -122,8 +130,14 @@ namespace SeedData.Migrations
                     b.HasIndex("BloomMonthId")
                         .HasName("fk_monthbloom_idx");
 
-                    b.HasIndex("ColorId")
+                    b.HasIndex("Color1Id")
                         .HasName("fk_color_idx");
+
+                    b.HasIndex("Color2Id")
+                        .HasName("fk_color2_idx");
+
+                    b.HasIndex("Color3Id")
+                        .HasName("fk_color3_idx");
 
                     b.HasIndex("EndMonthId")
                         .HasName("fk_monthend_idx");
@@ -141,10 +155,20 @@ namespace SeedData.Migrations
                         .HasForeignKey("BloomMonthId")
                         .HasConstraintName("fk_monthbloom");
 
-                    b.HasOne("SeedData.Data.Color", "Color")
-                        .WithMany("Seed")
-                        .HasForeignKey("ColorId")
+                    b.HasOne("SeedData.Data.Color", "Color1")
+                        .WithMany("SeedColor1")
+                        .HasForeignKey("Color1Id")
                         .HasConstraintName("fk_color");
+
+                    b.HasOne("SeedData.Data.Color", "Color2")
+                        .WithMany("SeedColor2")
+                        .HasForeignKey("Color2Id")
+                        .HasConstraintName("fk_color2");
+
+                    b.HasOne("SeedData.Data.Color", "Color3")
+                        .WithMany("SeedColor3")
+                        .HasForeignKey("Color3Id")
+                        .HasConstraintName("fk_color3");
 
                     b.HasOne("SeedData.Data.Month", "EndMonth")
                         .WithMany("SeedEndMonth")

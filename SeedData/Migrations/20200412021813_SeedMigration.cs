@@ -14,8 +14,8 @@ namespace SeedData.Migrations
                 schema: "seeds",
                 columns: table => new
                 {
-                    idcolor = table.Column<int>(type: "int(11)", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                    idcolor = table.Column<int>(type: "int(11)", nullable: false),
+                        
                     color = table.Column<string>(unicode: false, maxLength: 10, nullable: true)
                 },
                 constraints: table =>
@@ -28,8 +28,7 @@ namespace SeedData.Migrations
                 schema: "seeds",
                 columns: table => new
                 {
-                    idmonth = table.Column<int>(type: "int(11)", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                    idmonth = table.Column<int>(type: "int(11)", nullable: false),
                     month = table.Column<string>(unicode: false, maxLength: 10, nullable: true)
                 },
                 constraints: table =>
@@ -42,8 +41,7 @@ namespace SeedData.Migrations
                 schema: "seeds",
                 columns: table => new
                 {
-                    seedId = table.Column<int>(type: "int(11)", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                    seedId = table.Column<int>(type: "int(11)", nullable: false),
                     scientificName = table.Column<string>(unicode: false, maxLength: 100, nullable: true),
                     commonName = table.Column<string>(unicode: false, maxLength: 100, nullable: true),
                     prairie = table.Column<byte>(type: "tinyint(4)", nullable: true),
@@ -54,10 +52,12 @@ namespace SeedData.Migrations
                     mesic = table.Column<byte>(type: "tinyint(4)", nullable: true),
                     wetmesic = table.Column<byte>(type: "tinyint(4)", nullable: true),
                     wet = table.Column<byte>(type: "tinyint(4)", nullable: true),
-                    colorId = table.Column<int>(type: "int(11)", nullable: true),
+                    color1Id = table.Column<int>(type: "int(11)", nullable: true),
                     startMonthId = table.Column<int>(type: "int(11)", nullable: true),
                     endMonthId = table.Column<int>(type: "int(11)", nullable: true),
-                    bloomMonthId = table.Column<int>(type: "int(11)", nullable: true)
+                    bloomMonthId = table.Column<int>(type: "int(11)", nullable: true),
+                    color2Id = table.Column<int>(type: "int(11)", nullable: true),
+                    color3Id = table.Column<int>(type: "int(11)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -71,7 +71,21 @@ namespace SeedData.Migrations
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "fk_color",
-                        column: x => x.colorId,
+                        column: x => x.color1Id,
+                        principalSchema: "seeds",
+                        principalTable: "color",
+                        principalColumn: "idcolor",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "fk_color2",
+                        column: x => x.color2Id,
+                        principalSchema: "seeds",
+                        principalTable: "color",
+                        principalColumn: "idcolor",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "fk_color3",
+                        column: x => x.color3Id,
                         principalSchema: "seeds",
                         principalTable: "color",
                         principalColumn: "idcolor",
@@ -102,7 +116,19 @@ namespace SeedData.Migrations
                 name: "fk_color_idx",
                 schema: "seeds",
                 table: "seed",
-                column: "colorId");
+                column: "color1Id");
+
+            migrationBuilder.CreateIndex(
+                name: "fk_color2_idx",
+                schema: "seeds",
+                table: "seed",
+                column: "color2Id");
+
+            migrationBuilder.CreateIndex(
+                name: "fk_color3_idx",
+                schema: "seeds",
+                table: "seed",
+                column: "color3Id");
 
             migrationBuilder.CreateIndex(
                 name: "fk_monthend_idx",

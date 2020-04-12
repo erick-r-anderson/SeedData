@@ -38,11 +38,11 @@ namespace SeedData
             services.AddEntityFrameworkSqlite()  
                 .AddDbContext<seedsContext>();
     
-            /* services.AddDbContext<seedsContext>(options =>
+            services.AddDbContext<seedsContext>(options =>
                       options.UseSqlite(Configuration.GetConnectionString("LocalDB")));
 
-             services.AddDbContext<seedsContext>(options =>
-                     options.UseMySQL(Configuration.GetConnectionString("MySQLContextConnection")));*/
+            /* services.AddDbContext<seedsContext>(options =>
+                    options.UseMySQL(Configuration.GetConnectionString("MySQLContextConnection")));*/
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

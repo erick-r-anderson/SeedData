@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -21,11 +22,12 @@ namespace SeedData.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySQL("server=localhost;port=3306;user=root;password=9545;database=seeds");
-            }
+            var connectionStringBuilder = new SqliteConnectionStringBuilder { DataSource = "seeds.db" };
+            var connectionString = connectionStringBuilder.ToString();
+            var connection = new SqliteConnection(connectionString);
+
+            optionsBuilder.UseSqlite(connection);
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
