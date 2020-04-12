@@ -29,19 +29,8 @@ namespace SeedData.Controllers
         {
             var seedsContext = _context.Seed.Include(s => s.BloomMonth).Include(s => s.Color1).Include(s => s.EndMonth).Include(s => s.StartMonth);
             IQueryable<Seed> displaySeeds;
-
-            
-            if (SearchString != null)
-            {
-                pageNumber = 1;
-            }
-            else
-            {
-                SearchString = currentFilter;
-            }
-
-            ViewData["CurrentFilter"] = SearchString;
-
+                    
+           
             if (SearchString != null)
             {
 
@@ -50,18 +39,20 @@ namespace SeedData.Controllers
                  s.Color1.Color1.ToUpper().Contains(SearchString.ToUpper()) ||
                  s.BloomMonth.Month1.ToUpper().Contains(SearchString.ToUpper()) ||
                  s.StartMonth.Month1.ToUpper().Contains(SearchString.ToUpper()) ||
-                 s.EndMonth.Month1.ToUpper().Contains(SearchString.ToUpper())))
-                    ;
+                 s.EndMonth.Month1.ToUpper().Contains(SearchString.ToUpper())));
+                    
             }
             else
             {
                 displaySeeds = seedsContext;
             }
 
+            displaySeeds = displaySeeds.OrderBy(s => s.ScientificName);
+
             ViewBag.DisplaySeeds = displaySeeds.ToList();
 
-            int pageSize = 20;
-            return View(await PaginatedList<Seed>.CreateAsync(displaySeeds.AsNoTracking(), pageNumber ?? 1, pageSize));
+            
+            return View(await displaySeeds.ToListAsync());
             
         }
 
