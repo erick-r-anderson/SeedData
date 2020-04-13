@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -22,12 +21,11 @@ namespace SeedData.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var connectionStringBuilder = new SqliteConnectionStringBuilder { DataSource = "seeds.db" };
-            var connectionString = connectionStringBuilder.ToString();
-            var connection = new SqliteConnection(connectionString);
-
-            optionsBuilder.UseSqlite(connection);
-
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseMySQL("server=localhost;port=3306;user=root;password=9545;database=seeds");
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -68,6 +66,9 @@ namespace SeedData.Data
             {
                 entity.ToTable("seed", "seeds");
 
+                entity.HasIndex(e => e.BloomMonthEndId)
+                    .HasName("fk_monthbloomend_idx");
+
                 entity.HasIndex(e => e.BloomMonthId)
                     .HasName("fk_monthbloom_idx");
 
@@ -88,6 +89,10 @@ namespace SeedData.Data
 
                 entity.Property(e => e.SeedId)
                     .HasColumnName("seedId")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.BloomMonthEndId)
+                    .HasColumnName("bloomMonthEndId")
                     .HasColumnType("int(11)");
 
                 entity.Property(e => e.BloomMonthId)
@@ -155,6 +160,11 @@ namespace SeedData.Data
                 entity.Property(e => e.Woodland)
                     .HasColumnName("woodland")
                     .HasColumnType("tinyint(4)");
+
+                entity.HasOne(d => d.BloomMonthEnd)
+                    .WithMany(p => p.SeedBloomMonthEnd)
+                    .HasForeignKey(d => d.BloomMonthEndId)
+                    .HasConstraintName("fk_monthbloomend");
 
                 entity.HasOne(d => d.BloomMonth)
                     .WithMany(p => p.SeedBloomMonth)

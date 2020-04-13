@@ -23,8 +23,10 @@ namespace SeedData.Data
         public int? BloomMonthId { get; set; }
         public int? Color2Id { get; set; }
         public int? Color3Id { get; set; }
+        public int? BloomMonthEndId { get; set; }
 
         public Month BloomMonth { get; set; }
+        public Month BloomMonthEnd { get; set; }
         public Color Color1 { get; set; }
         public Color Color2 { get; set; }
         public Color Color3 { get; set; }
@@ -99,27 +101,26 @@ namespace SeedData.Data
 
             foreach (string s in sunExposures)
             {
-                if (s == "P" || s== "P " || s==" P" || s==" P ")
+                if (s == "P")
                     this.Prairie = 1;
-                if (s == "S" || s=="S " || s== " S" || s==" S ")
+                if (s == "S")
                     this.Savanna = 1;
-                if (s == "W" || s=="W " || s==" W" || s== " W ")
+                if (s == "W")
                     this.Woodland = 1;
             }
 
             foreach (string s in moistures)
             {
-                if (s == "D" || s == "D " || s == " D" || s == " D ")
-                    this.Dry = 1;
-                if (s == "DM" || s == "DM " || s == " DM" || s == " DM ")
+                if (s == "D")
                     this.Drymesic = 1;
-                if (s == "M" || s == "M " || s == " M" || s == " M ")
-                    this.Mesic = 1; 
-                if (s == "WM" || s == "WM " || s == " WM" || s == " WM ")
+                if (s == "DM")
+                    this.Drymesic = 1;
+                if (s == "M")
+                    this.Mesic = 1;
+                if (s == "WM")
                     this.Wetmesic = 1;
-                if (s == "W" || s == "W " || s == " W" || s == " W ")
+                if (s == "W")
                     this.Wet = 1;
-
             }
         }
     }

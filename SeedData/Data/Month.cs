@@ -8,6 +8,7 @@ namespace SeedData.Data
         public Month()
         {
             SeedBloomMonth = new HashSet<Seed>();
+            SeedBloomMonthEnd = new HashSet<Seed>();
             SeedEndMonth = new HashSet<Seed>();
             SeedStartMonth = new HashSet<Seed>();
         }
@@ -16,6 +17,7 @@ namespace SeedData.Data
         public string Month1 { get; set; }
 
         public ICollection<Seed> SeedBloomMonth { get; set; }
+        public ICollection<Seed> SeedBloomMonthEnd { get; set; }
         public ICollection<Seed> SeedEndMonth { get; set; }
         public ICollection<Seed> SeedStartMonth { get; set; }
     }
