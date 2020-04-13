@@ -27,7 +27,8 @@ namespace SeedData.Controllers
         // GET: Seeds
         public async Task<IActionResult> Index(string SearchString, int? pageNumber, string currentFilter)
         {
-            var seedsContext = _context.Seed.Include(s => s.BloomMonth).Include(s => s.Color1).Include(s => s.EndMonth).Include(s => s.StartMonth);
+            var seedsContext = _context.Seed.Include(s => s.BloomMonth).Include(s => s.BloomMonthEnd).Include(s => s.Color1).Include(s => s.Color2).Include(s => s.Color3)
+                .Include(s => s.EndMonth).Include(s => s.StartMonth);
             IQueryable<Seed> displaySeeds;
                     
            
@@ -135,7 +136,7 @@ namespace SeedData.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("SeedId,ScientificName,CommonName,DisplayPrairie,DisplaySavanna,DisplayWoodland,DisplayDry,DisplayDryMesic,DisplayMesic,DisplayWetMesic,DisplayWet,ColorId,StartMonthId,EndMonthId,BloomMonthId")] Seed seed)
+        public async Task<IActionResult> Edit(int id, [Bind("SeedId,ScientificName,CommonName,DisplayPrairie,DisplaySavanna,DisplayWoodland,DisplayDry,DisplayDryMesic,DisplayMesic,DisplayWetMesic,DisplayWet,Color1Id, Color2Id, Color3Id, StartMonthId,EndMonthId,BloomMonthId, BloomMonthEndId")] Seed seed)
         {
             if (id != seed.SeedId)
             {

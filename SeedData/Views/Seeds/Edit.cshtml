@@ -79,34 +79,38 @@
             </div>
             <div class="form-group">
                 <label asp-for="Color1Id" class="control-label">Primary Bloom Color</label>
-                <select asp-for="Color1Id" class="form-control" asp-items="ViewBag.Color1Id"></select>
+                <select asp-for="Color1Id" class="form-control" asp-items="ViewBag.ColorId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Color2Id" class="control-label">Bloom Color 2</label>
-                <select asp-for="Color2Id" class="form-control" asp-items="ViewBag.Color1Id"></select>
+                <select asp-for="Color2Id" class="form-control" asp-items="ViewBag.ColorId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Color3Id" class="control-label">Bloom Color 3</label>
-                <select asp-for="Color3Id" class="form-control" asp-items="ViewBag.Color1Id"></select>
+                <select asp-for="Color3Id" class="form-control" asp-items="ViewBag.ColorId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="BloomMonthId" class="control-label">Bloom Month</label>
+                <label asp-for="BloomMonthId" class="control-label">Bloom Start Month</label>
                 <select asp-for="BloomMonthId" class="form-control" asp-items="ViewBag.BloomMonthId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="StartMonthId" class="control-label">Start Month</label>
-                <select asp-for="StartMonthId" class="form-control" asp-items="ViewBag.StartMonthId"></select>
+            <label asp-for="BloomMonthEndId" class="control-label">Bloom End Month</label>
+            <select asp-for="BloomMonthEndId" class="form-control" asp-items="ViewBag.BloomMonthId"></select>
             </div>
-            <div class="form-group">
-                <label asp-for="EndMonthId" class="control-label">End Month</label>
-                <select asp-for="EndMonthId" class="form-control" asp-items="ViewBag.EndMonthId"></select>
-            </div>
-
-            <div class="form-group">
-                <input type="submit" value="Update" class="btn btn-default" />
-            </div>
-        </form>
+    <div class="form-group">
+        <label asp-for="StartMonthId" class="control-label">Collection Start Month</label>
+        <select asp-for="StartMonthId" class="form-control" asp-items="ViewBag.StartMonthId"></select>
     </div>
+    <div class="form-group">
+        <label asp-for="EndMonthId" class="control-label">Collection End Month</label>
+        <select asp-for="EndMonthId" class="form-control" asp-items="ViewBag.EndMonthId"></select>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Update" class="btn btn-default" />
+    </div>
+    </form>
+</div>
 </div>
 
 <div>

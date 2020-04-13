@@ -52,7 +52,10 @@
                 Wet
             </th>
             <th>
-                Bloom Month
+                Bloom Start Month
+            </th>
+            <th>
+                Bloom End Month
             </th>
             <th>
                 Primary Bloom Color
@@ -64,10 +67,10 @@
                 Bloom Color 3
             </th>
             <th>
-                End Month
+                Collection Start Month
             </th>
             <th>
-                Start Month
+                Collection End Month
             </th>
             <th></th>
         </tr>
@@ -134,6 +137,9 @@
                 @Html.DisplayFor(modelItem => item.BloomMonth.Month1)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.BloomMonthEnd.Month1)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Color1.Color1)
             </td>
             <td>
@@ -143,11 +149,12 @@
                 @Html.DisplayFor(modelItem => item.Color3.Color1)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EndMonth.Month1)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.StartMonth.Month1)
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndMonth.Month1)
+            </td>
+
             <td>
                 <a asp-action="Edit" asp-route-id="@item.SeedId">Edit</a>
 
