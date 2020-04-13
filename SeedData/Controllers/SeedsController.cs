@@ -48,7 +48,7 @@ namespace SeedData.Controllers
                 displaySeeds = seedsContext;
             }
 
-            displaySeeds = displaySeeds.OrderBy(s => s.ScientificName);
+            //displaySeeds = displaySeeds.OrderBy(s => s.ScientificName);
 
             ViewBag.DisplaySeeds = displaySeeds.ToList();
 
@@ -95,7 +95,8 @@ namespace SeedData.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("SeedId,ScientificName,CommonName,DisplayPrairie,DisplaySavanna,DisplayWoodland,DisplayDry,DisplayDryMesic,DisplayMesic,DisplayWetMesic,DisplayWet,ColorId,StartMonthId,EndMonthId,BloomMonthId")] Seed seed)
+        public async Task<IActionResult> Create([Bind("SeedId,ScientificName,CommonName,DisplayPrairie,DisplaySavanna,DisplayWoodland,DisplayDry," +
+            "DisplayDryMesic,DisplayMesic,DisplayWetMesic,DisplayWet,ColorId,StartMonthId,EndMonthId,BloomMonthId")] Seed seed)
         {
             if (ModelState.IsValid)
             {
@@ -136,7 +137,9 @@ namespace SeedData.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("SeedId,ScientificName,CommonName,DisplayPrairie,DisplaySavanna,DisplayWoodland,DisplayDry,DisplayDryMesic,DisplayMesic,DisplayWetMesic,DisplayWet,Color1Id, Color2Id, Color3Id, StartMonthId,EndMonthId,BloomMonthId, BloomMonthEndId")] Seed seed)
+        public async Task<IActionResult> Edit(int id, [Bind("SeedId,ScientificName,CommonName,DisplayPrairie,DisplaySavanna,DisplayWoodland," +
+            "DisplayDry,DisplayDryMesic,DisplayMesic,DisplayWetMesic,DisplayWet,Color1Id, Color2Id, Color3Id, StartMonthId," +
+            "EndMonthId,BloomMonthId, BloomMonthEndId")] Seed seed)
         {
             if (id != seed.SeedId)
             {
