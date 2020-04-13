@@ -57,6 +57,10 @@ namespace SeedData.Migrations
                         .HasColumnName("seedId")
                         .HasColumnType("int(11)");
 
+                    b.Property<int?>("BloomMonthEndId")
+                        .HasColumnName("bloomMonthEndId")
+                        .HasColumnType("int(11)");
+
                     b.Property<int?>("BloomMonthId")
                         .HasColumnName("bloomMonthId")
                         .HasColumnType("int(11)");
@@ -125,6 +129,9 @@ namespace SeedData.Migrations
 
                     b.HasKey("SeedId");
 
+                    b.HasIndex("BloomMonthEndId")
+                        .HasName("fk_monthbloomend_idx");
+
                     b.HasIndex("BloomMonthId")
                         .HasName("fk_monthbloom_idx");
 
@@ -148,6 +155,11 @@ namespace SeedData.Migrations
 
             modelBuilder.Entity("SeedData.Data.Seed", b =>
                 {
+                    b.HasOne("SeedData.Data.Month", "BloomMonthEnd")
+                        .WithMany("SeedBloomMonthEnd")
+                        .HasForeignKey("BloomMonthEndId")
+                        .HasConstraintName("fk_monthbloomend");
+
                     b.HasOne("SeedData.Data.Month", "BloomMonth")
                         .WithMany("SeedBloomMonth")
                         .HasForeignKey("BloomMonthId")

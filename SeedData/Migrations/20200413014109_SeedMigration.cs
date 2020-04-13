@@ -29,6 +29,7 @@ namespace SeedData.Migrations
                 columns: table => new
                 {
                     idmonth = table.Column<int>(type: "int(11)", nullable: false),
+                     
                     month = table.Column<string>(unicode: false, maxLength: 10, nullable: true)
                 },
                 constraints: table =>
@@ -42,6 +43,7 @@ namespace SeedData.Migrations
                 columns: table => new
                 {
                     seedId = table.Column<int>(type: "int(11)", nullable: false),
+                        
                     scientificName = table.Column<string>(unicode: false, maxLength: 100, nullable: true),
                     commonName = table.Column<string>(unicode: false, maxLength: 100, nullable: true),
                     prairie = table.Column<byte>(type: "tinyint(4)", nullable: true),
@@ -57,11 +59,19 @@ namespace SeedData.Migrations
                     endMonthId = table.Column<int>(type: "int(11)", nullable: true),
                     bloomMonthId = table.Column<int>(type: "int(11)", nullable: true),
                     color2Id = table.Column<int>(type: "int(11)", nullable: true),
-                    color3Id = table.Column<int>(type: "int(11)", nullable: true)
+                    color3Id = table.Column<int>(type: "int(11)", nullable: true),
+                    bloomMonthEndId = table.Column<int>(type: "int(11)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_seed", x => x.seedId);
+                    table.ForeignKey(
+                        name: "fk_monthbloomend",
+                        column: x => x.bloomMonthEndId,
+                        principalSchema: "seeds",
+                        principalTable: "month",
+                        principalColumn: "idmonth",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "fk_monthbloom",
                         column: x => x.bloomMonthId,
@@ -105,6 +115,12 @@ namespace SeedData.Migrations
                         principalColumn: "idmonth",
                         onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "fk_monthbloomend_idx",
+                schema: "seeds",
+                table: "seed",
+                column: "bloomMonthEndId");
 
             migrationBuilder.CreateIndex(
                 name: "fk_monthbloom_idx",

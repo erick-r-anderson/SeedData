@@ -9,7 +9,7 @@ using SeedData.Data;
 namespace SeedData.Migrations
 {
     [DbContext(typeof(seedsContext))]
-    [Migration("20200412021813_SeedMigration")]
+    [Migration("20200413014109_SeedMigration")]
     partial class SeedMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,6 +57,10 @@ namespace SeedData.Migrations
                     b.Property<int>("SeedId")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("seedId")
+                        .HasColumnType("int(11)");
+
+                    b.Property<int?>("BloomMonthEndId")
+                        .HasColumnName("bloomMonthEndId")
                         .HasColumnType("int(11)");
 
                     b.Property<int?>("BloomMonthId")
@@ -127,6 +131,9 @@ namespace SeedData.Migrations
 
                     b.HasKey("SeedId");
 
+                    b.HasIndex("BloomMonthEndId")
+                        .HasName("fk_monthbloomend_idx");
+
                     b.HasIndex("BloomMonthId")
                         .HasName("fk_monthbloom_idx");
 
@@ -150,6 +157,11 @@ namespace SeedData.Migrations
 
             modelBuilder.Entity("SeedData.Data.Seed", b =>
                 {
+                    b.HasOne("SeedData.Data.Month", "BloomMonthEnd")
+                        .WithMany("SeedBloomMonthEnd")
+                        .HasForeignKey("BloomMonthEndId")
+                        .HasConstraintName("fk_monthbloomend");
+
                     b.HasOne("SeedData.Data.Month", "BloomMonth")
                         .WithMany("SeedBloomMonth")
                         .HasForeignKey("BloomMonthId")

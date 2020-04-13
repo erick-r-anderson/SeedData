@@ -101,25 +101,25 @@ namespace SeedData.Data
 
             foreach (string s in sunExposures)
             {
-                if (s == "P")
+                if (s == "P" || s==" P" || s=="P " || s==" P ")
                     this.Prairie = 1;
-                if (s == "S")
+                if (s == "S" || s == " S" || s == "S " || s == " S ")
                     this.Savanna = 1;
-                if (s == "W")
+                if (s == "W" || s == " W" || s == "W " || s == " W ")
                     this.Woodland = 1;
             }
 
             foreach (string s in moistures)
             {
-                if (s == "D")
+                if (s == "D" || s == " D" || s == "D " || s == " D ")
                     this.Drymesic = 1;
-                if (s == "DM")
+                if (s == "DM" || s == " DM" || s == "DM " || s == " DM ")
                     this.Drymesic = 1;
-                if (s == "M")
+                if (s == "M" || s == " M" || s == "M " || s == " M ")
                     this.Mesic = 1;
-                if (s == "WM")
+                if (s == "WM" || s == " WM" || s == "WM " || s == " WM ")
                     this.Wetmesic = 1;
-                if (s == "W")
+                if (s == "W" || s == " W" || s == "W " || s == " W ")
                     this.Wet = 1;
             }
         }
