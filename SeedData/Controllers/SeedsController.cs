@@ -28,7 +28,7 @@ namespace SeedData.Controllers
         public async Task<IActionResult> Index(string SearchString, int? pageNumber, string currentFilter)
         {
             var seedsContext = _context.Seed.Include(s => s.BloomMonth).Include(s => s.BloomMonthEnd).Include(s => s.Color1).Include(s => s.Color2).Include(s => s.Color3)
-                .Include(s => s.EndMonth).Include(s => s.StartMonth);
+                .Include(s => s.EndMonth).Include(s => s.StartMonth).Include(s => s.GrowthHeight);
             IQueryable<Seed> displaySeeds;
                     
            
@@ -129,6 +129,7 @@ namespace SeedData.Controllers
             ViewData["ColorId"] = new SelectList(_context.Color, "Idcolor", "Color1");
             ViewData["EndMonthId"] = new SelectList(_context.Month, "Idmonth", "Month1");
             ViewData["StartMonthId"] = new SelectList(_context.Month, "Idmonth", "Month1");
+            ViewData["HeightId"] = new SelectList(_context.Height, "IdHeight", "HeightValue");
             return View(seed);
         }
 
@@ -139,7 +140,7 @@ namespace SeedData.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("SeedId,ScientificName,CommonName,DisplayPrairie,DisplaySavanna,DisplayWoodland," +
             "DisplayDry,DisplayDryMesic,DisplayMesic,DisplayWetMesic,DisplayWet,Color1Id, Color2Id, Color3Id, StartMonthId," +
-            "EndMonthId,BloomMonthId, BloomMonthEndId")] Seed seed)
+            "EndMonthId,BloomMonthId, BloomMonthEndId, DisplayFoundInPark, HeightId")] Seed seed)
         {
             if (id != seed.SeedId)
             {
@@ -150,6 +151,8 @@ namespace SeedData.Controllers
             {
                 try
                 {
+                    var height = await _context.Height.FindAsync(seed.HeightId);
+                    seed.GrowthHeight = height;
                     _context.Update(seed);
                     await _context.SaveChangesAsync();
                 }
@@ -170,6 +173,7 @@ namespace SeedData.Controllers
             ViewData["ColorId"] = new SelectList(_context.Color, "Idcolor", "Color1", seed.Color1Id);
             ViewData["EndMonthId"] = new SelectList(_context.Month, "Idmonth", "Month1", seed.EndMonthId);
             ViewData["StartMonthId"] = new SelectList(_context.Month, "Idmonth", "Month1", seed.StartMonthId);
+            ViewData["HeightId"] = new SelectList(_context.Height, "IdHeight", "HeightValue", seed.HeightId);
             return View(seed);
             
         }

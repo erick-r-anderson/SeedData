@@ -19,6 +19,7 @@ namespace SeedData.Data
         public virtual DbSet<Color> Color { get; set; }
         public virtual DbSet<Month> Month { get; set; }
         public virtual DbSet<Seed> Seed { get; set; }
+        public virtual DbSet<Height> Height { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -43,6 +44,22 @@ namespace SeedData.Data
 
                 entity.Property(e => e.Color1)
                     .HasColumnName("color")
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<Height>(entity =>
+            {
+                entity.HasKey(e => e.IdHeight);
+
+                entity.ToTable("height", "seeds");
+
+                entity.Property(e => e.IdHeight)
+                    .HasColumnName("heightid")
+                    .HasColumnType("INTEGER");
+
+                entity.Property(e => e.HeightValue)
+                    .HasColumnName("height")
                     .HasMaxLength(10)
                     .IsUnicode(false);
             });
@@ -162,6 +179,10 @@ namespace SeedData.Data
                     .HasColumnName("woodland")
                     .HasColumnType("tinyint(4)");
 
+                entity.Property(e => e.HeightId)
+                    .HasColumnName("heightId")
+                    .HasColumnType("INTEGER");
+
                 entity.HasOne(d => d.BloomMonthEnd)
                     .WithMany(p => p.SeedBloomMonthEnd)
                     .HasForeignKey(d => d.BloomMonthEndId)
@@ -196,6 +217,16 @@ namespace SeedData.Data
                     .WithMany(p => p.SeedStartMonth)
                     .HasForeignKey(d => d.StartMonthId)
                     .HasConstraintName("fk_monthstart");
+
+                entity.HasOne(d => d.GrowthHeight)
+                    .WithMany(p => p.GrowthHeight)
+                    .HasForeignKey(d => d.HeightId)
+                    .HasConstraintName("fk_heightid");
+
+                entity.Property(e => e.FoundInPark)
+                    .HasColumnName("foundInPark")
+                    .HasColumnType("tinyint(4)");
+
             });
         }
     }

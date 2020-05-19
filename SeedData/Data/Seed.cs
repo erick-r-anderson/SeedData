@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLitePCL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -23,7 +24,9 @@ namespace SeedData.Data
         public int? BloomMonthId { get; set; }
         public int? Color2Id { get; set; }
         public int? Color3Id { get; set; }
-        public int? BloomMonthEndId { get; set; }
+        public int? BloomMonthEndId { get; set; } 
+        public byte? FoundInPark { get; set; }
+        public int? HeightId { get; set; }
 
         public Month BloomMonth { get; set; }
         public Month BloomMonthEnd { get; set; }
@@ -32,6 +35,8 @@ namespace SeedData.Data
         public Color Color3 { get; set; }
         public Month EndMonth { get; set; }
         public Month StartMonth { get; set; }
+        public Height GrowthHeight { get; set; }
+        
 
         [NotMapped]
         public String SunExposure { get; set; }
@@ -92,6 +97,13 @@ namespace SeedData.Data
         {
             get { return Convert.ToBoolean(this.Wet); }
             set { this.Wet = Convert.ToByte(value); }
+        }
+
+        [NotMapped]
+        public bool DisplayFoundInPark
+        {
+            get { return Convert.ToBoolean(this.FoundInPark); }
+            set { this.FoundInPark = Convert.ToByte(value); }
         }
 
         public void SetProperties()

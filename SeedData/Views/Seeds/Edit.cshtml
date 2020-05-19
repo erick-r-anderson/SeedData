@@ -94,22 +94,31 @@
                 <select asp-for="BloomMonthId" class="form-control" asp-items="ViewBag.BloomMonthId"></select>
             </div>
             <div class="form-group">
-            <label asp-for="BloomMonthEndId" class="control-label">Bloom End Month</label>
-            <select asp-for="BloomMonthEndId" class="form-control" asp-items="ViewBag.BloomMonthId"></select>
+                <label asp-for="BloomMonthEndId" class="control-label">Bloom End Month</label>
+                <select asp-for="BloomMonthEndId" class="form-control" asp-items="ViewBag.BloomMonthId"></select>
             </div>
-    <div class="form-group">
-        <label asp-for="StartMonthId" class="control-label">Collection Start Month</label>
-        <select asp-for="StartMonthId" class="form-control" asp-items="ViewBag.StartMonthId"></select>
-    </div>
-    <div class="form-group">
-        <label asp-for="EndMonthId" class="control-label">Collection End Month</label>
-        <select asp-for="EndMonthId" class="form-control" asp-items="ViewBag.EndMonthId"></select>
-    </div>
+            <div class="form-group">
+                <label asp-for="StartMonthId" class="control-label">Collection Start Month</label>
+                <select asp-for="StartMonthId" class="form-control" asp-items="ViewBag.StartMonthId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndMonthId" class="control-label">Collection End Month</label>
+                <select asp-for="EndMonthId" class="form-control" asp-items="ViewBag.EndMonthId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="HeightId" class="control-label">Height</label>
+                <select asp-for="HeightId" class="form-control" asp-items="ViewBag.HeightId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="FoundInPark" class="control-label">Found in Three Bridges Park</label>
+                <input asp-for="DisplayFoundInPark" class="form-control" />
+                <span asp-validation-for="Wetmesic" class="text-danger"></span>
+            </div>
 
-    <div class="form-group">
-        <input type="submit" value="Update" class="btn btn-default" />
-    </div>
-    </form>
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-default" />
+            </div>
+        </form>
 </div>
 </div>
 
